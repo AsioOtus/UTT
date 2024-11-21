@@ -6,7 +6,6 @@
 //
 
 import ILScreenFeed
-import ILScreenPhotoDetails
 import SwiftUI
 
 public struct RootView: View {

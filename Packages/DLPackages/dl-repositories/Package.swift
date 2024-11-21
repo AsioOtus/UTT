@@ -33,7 +33,7 @@ let package = Package(
 		.package(path: "../dl-use-cases-protocols"),
 		.package(path: "../dl-logic"),
 
-		.package(url: "https://github.com/AsioOtus/network-util", from: "1.0.0"),
+		.package(url: "https://github.com/AsioOtus/network-util", from: "2.0.0"),
 		.package(url: "https://github.com/pointfreeco/swift-dependencies", exact: "1.3.0"),
 	],
 	targets: [

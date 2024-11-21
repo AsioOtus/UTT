@@ -11,13 +11,13 @@ import DLUseCasesDataProvidersProtocols
 import Foundation
 
 public struct PhotoDetailsRepository: PPhotoDetailsDataProvider {
-	@Dependency(\.networkController) var networkController
+	@Dependency(\.urlClient) var urlClient
 
 	public func loadPhoto (url: URL) async throws -> Data {
-		try await networkController
+		try await urlClient
 			.send(
 				.get(url.absoluteString),
-				.delegate(decoding: { $0 })
+				delegate: .standard(decoding: { data, _, _ in data })
 			)
 			.data
 	}

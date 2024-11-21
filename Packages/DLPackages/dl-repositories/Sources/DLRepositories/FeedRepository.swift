@@ -12,11 +12,11 @@ import DLUseCasesDataProvidersProtocols
 import Foundation
 
 struct FeedRepository: PFeedDataProvider {
-	@Dependency(\.repeatableNetworkController) var networkController
+	@Dependency(\.repeatableUrlClient) var urlClient
 
 	func load (photosPerPage: Int) async throws -> PhotosFragmentEntity {
 		let request = CuratedRequest(page: 1, perPage: photosPerPage)
-		let responseModel = try await networkController.send(request, responseModel: CuratedRequest.ResponseModel.self).model
+		let responseModel = try await urlClient.send(request, responseModel: CuratedRequest.ResponseModel.self).model
 		let photosFragmentEntity = map(responseModel)
 
 		return photosFragmentEntity
@@ -24,7 +24,7 @@ struct FeedRepository: PFeedDataProvider {
 
 	func load (nextFragmentUrl: URL) async throws -> PhotosFragmentEntity {
 		let request = NextCuratedRequest(addressUrl: nextFragmentUrl)
-		let responseModel = try await networkController.send(request, responseModel: CuratedRequest.ResponseModel.self).model
+		let responseModel = try await urlClient.send(request, responseModel: CuratedRequest.ResponseModel.self).model
 		let photosFragmentEntity = map(responseModel)
 
 		return photosFragmentEntity

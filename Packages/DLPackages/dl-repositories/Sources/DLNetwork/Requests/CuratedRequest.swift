@@ -12,26 +12,18 @@ public struct CuratedRequest: Request {
 	public let page: Int
 	public let perPage: Int
 
-	public var path: String { "" }
-	public var body: Data? { nil }
-
-	public var query: Query {
-		[
-			"page": page.description,
-			"per_page": perPage.description
-		]
+	public var configuration: RequestConfiguration {
+		.init()
+			.setScheme("https")
+			.setHost("api.pexels.com")
+			.setPath("v1/curated")
+			.addQueryItem(.init(name: "page", value: page.description))
+			.addQueryItem(.init(name: "per_page", value: perPage.description))
 	}
 
 	public init (page: Int, perPage: Int) {
 		self.page = page
 		self.perPage = perPage
-	}
-
-	public func configurationUpdate (_ configuration: URLRequestConfiguration) -> URLRequestConfiguration {
-		configuration
-			.setScheme("https")
-			.setAddress("api.pexels.com")
-			.setBaseSubpath("v1/curated")
 	}
 }
 

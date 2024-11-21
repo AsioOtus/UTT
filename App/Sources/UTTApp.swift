@@ -13,11 +13,11 @@ import SwiftUI
 
 @main
 struct UTTApp: App {
-	@Dependency(\.networkController) var networkController
+	@Dependency(\.urlClient) var urlClient
 
 	init () {
 		Task { [self] in
-			for await log in networkController.logs {
+			for await log in urlClient.logs {
 				log.message.urlRequest?.url.map { print($0) }
 //				dump(log)
 			}

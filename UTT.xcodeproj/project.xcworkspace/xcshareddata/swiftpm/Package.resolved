@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AsioOtus/network-util",
       "state" : {
-        "revision" : "40726672771eb92c1a9ca5322077fc138d41552a",
-        "version" : "1.2.1"
+        "revision" : "f3f8cf71e21bdd0fae0659e7dc272a9f770601ea",
+        "version" : "2.1.4"
       }
     },
     {

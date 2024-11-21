@@ -31,6 +31,10 @@ public struct CacheCleanupMenuView: View {
 					URLCache.shared.removeAllCachedResponses()
 				}
 
+				Button("Clear persistent storage", systemImage: "archivebox") {
+
+				}
+
 				Divider()
 
 				Button("Clear all cache", systemImage: "trash") {
