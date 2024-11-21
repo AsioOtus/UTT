@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ReloadPhotoView" customModule="ILScreenFeed">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oS6-Gs-aN4">
+                    <rect key="frame" x="173" y="409" width="47" height="34.333333333333314"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="tinted" image="arrow.clockwise" catalog="system"/>
+                    <connections>
+                        <action selector="onReloadButtonTap" destination="iN0-l3-epB" eventType="touchUpInside" id="QHJ-zF-UQz"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQ6-6I-fpa">
+                    <rect key="frame" x="176" y="380" width="41.333333333333343" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="oS6-Gs-aN4" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="P9U-jB-slW"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="oS6-Gs-aN4" secondAttribute="bottom" constant="8" id="Tn6-j6-Te3"/>
+                <constraint firstItem="rQ6-6I-fpa" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="UNV-hU-9cj"/>
+                <constraint firstItem="rQ6-6I-fpa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="c2z-eU-v4y"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rQ6-6I-fpa" secondAttribute="trailing" constant="24" id="eG8-fW-wOb"/>
+                <constraint firstItem="oS6-Gs-aN4" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="nHn-L3-5zC"/>
+                <constraint firstItem="rQ6-6I-fpa" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="oYp-T3-7hm"/>
+                <constraint firstItem="oS6-Gs-aN4" firstAttribute="top" secondItem="rQ6-6I-fpa" secondAttribute="bottom" constant="8" symbolic="YES" id="w4N-iR-mw4"/>
+            </constraints>
+            <connections>
+                <outlet property="messageLabel" destination="rQ6-6I-fpa" id="6IN-Sh-nbk"/>
+            </connections>
+            <point key="canvasLocation" x="140" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow.clockwise" catalog="system" width="113" height="128"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
