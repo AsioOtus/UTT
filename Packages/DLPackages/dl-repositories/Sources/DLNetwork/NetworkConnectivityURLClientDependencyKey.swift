@@ -50,13 +50,15 @@ public struct NetworkConnectivityURLClientDecorator: URLClientDecorator {
 		do {
 			let (data, urlResponse) = try await sendingAction(sendingModel.urlSession, sendingModel.urlRequest)
 			return (data, urlResponse)
-		} catch let urlError as URLError {
-			let isOffline = Self.offlineUrlErrorCodes.contains(urlError.code)
+		} catch let urlClientError as URLClientError {
+			guard case .network(let networkError) = urlClientError.category else { throw urlClientError }
+
+			let isOffline = Self.offlineUrlErrorCodes.contains(networkError.urlError.code)
 
 			if isOffline {
-				throw OfflineTriggerError(error: urlError)
+				throw OfflineError(error: networkError.urlError)
 			} else {
-				throw urlError
+				throw networkError.urlError
 			}
 		}
 	}

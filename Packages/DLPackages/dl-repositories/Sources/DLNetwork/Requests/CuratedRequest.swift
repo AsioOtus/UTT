@@ -58,36 +58,3 @@ extension CuratedRequest {
 		}
 	}
 }
-
-extension CuratedRequest.ResponseModel {
-	public struct Photo: Decodable {
-		public let id: Int
-		public let photographer: String
-		public let src: Source
-
-		public init (
-			id: Int,
-			photographer: String,
-			src: Source
-		) {
-			self.id = id
-			self.photographer = photographer
-			self.src = src
-		}
-	}
-}
-
-extension CuratedRequest.ResponseModel.Photo {
-	public struct Source: Decodable {
-		public let original: URL
-		public let large: URL
-
-		public init (
-			original: URL,
-			large: URL
-		) {
-			self.original = original
-			self.large = large
-		}
-	}
-}

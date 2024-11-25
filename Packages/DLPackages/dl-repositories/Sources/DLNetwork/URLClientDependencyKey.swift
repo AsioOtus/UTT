@@ -24,6 +24,7 @@ public enum URLClientDependencyKey: DependencyKey {
 			),
 			delegate: .standard(urlSessionBuilder: urlSession)
 		)
+		.networkConnectivityDetector()
 	}
 }
 

@@ -14,12 +14,11 @@ public enum RepeatableURLClientDependencyKey: DependencyKey {
 		@Dependency(\.urlClient) var urlClient
 
 		return urlClient
-			.networkConnectivityDetector()
 			.repeatable(
 				maxAttempts: 10,
 				delayStrategy: DelayProgressions.exponent(),
 				errorHandler: { error, _, _ in
-					if error is OfflineTriggerError {
+					if error is OfflineError {
 						throw error
 					}
 				}

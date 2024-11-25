@@ -26,65 +26,95 @@ public extension CuratedRequest.ResponseModel {
 	)
 }
 
-public extension CuratedRequest.ResponseModel.Photo {
+public extension Photo {
 	static let stubBohr = Self(
 		id: 1,
 		photographer: "Niels Bohr",
-		src: .stubSampleA
+		alt: "Description 1",
+		src: .stubSampleA,
+		width: 100,
+		height: 100
 	)
 
 	static let stubBorn = Self(
 		id: 2,
 		photographer: "Max Born",
-		src: .stubSampleA
+		alt: "Description 2",
+		src: .stubSampleA,
+		width: 100,
+		height: 100
 	)
 
 	static let stubDirac = Self(
 		id: 3,
 		photographer: "Paul Dirac",
-		src: .stubSampleA
+		alt: "Description 3",
+		src: .stubSampleA,
+		width: 100,
+		height: 100
 	)
 
 	static let stubEinstein = Self(
 		id: 4,
 		photographer: "Albert Einstein",
-		src: .stubSampleA
+		alt: "Description 4",
+		src: .stubSampleA,
+		width: 100,
+		height: 100
 	)
 
 	static let stubFermi = Self(
 		id: 5,
 		photographer: "Enrico Fermi",
-		src: .stubSampleA
+		alt: "Description 5",
+		src: .stubSampleA,
+		width: 100,
+		height: 100
 	)
 
 	static let stubHeisenberg = Self(
 		id: 6,
 		photographer: "Werner Heisenberg",
-		src: .stubSampleA
+		alt: "Description 6",
+		src: .stubSampleA,
+		width: 100,
+		height: 100
 	)
 
 	static let stubLorenz = Self(
 		id: 7,
 		photographer: "Hendrik Antoon Lorentz",
-		src: .stubSampleA
+		alt: "Description 7",
+		src: .stubSampleA,
+		width: 100,
+		height: 100
 	)
 
 	static let stubPauli = Self(
 		id: 8,
 		photographer: "Wolfgang Pauli",
-		src: .stubSampleA
+		alt: "Description 8",
+		src: .stubSampleA,
+		width: 100,
+		height: 100
 	)
 
 	static let stubPlanck = Self(
 		id: 9,
 		photographer: "Max Planck",
-		src: .stubSampleA
+		alt: "Description 9",
+		src: .stubSampleA,
+		width: 100,
+		height: 100
 	)
 
 	static let stubSchrodinger = Self(
 		id: 10,
 		photographer: "Erwin Schrödinger",
-		src: .stubSampleA
+		alt: "Description 10",
+		src: .stubSampleA,
+		width: 100,
+		height: 100
 	)
 
 	static let stubAll: [Self] = [
@@ -101,6 +131,6 @@ public extension CuratedRequest.ResponseModel.Photo {
 	]
 }
 
-public extension CuratedRequest.ResponseModel.Photo.Source {
+public extension Photo.Source {
 	static let stubSampleA = Self(original: .stubOriginal, large: .stubLarge)
 }
