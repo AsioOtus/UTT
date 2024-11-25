@@ -36,14 +36,7 @@ private extension FeedRepository {
 		.init(
 			page: responseModel.page,
 			photosPerPage: responseModel.perPage,
-			photos: responseModel.photos.map {
-				.init(
-					id: $0.id,
-					photographerName: $0.photographer,
-					originalUrl: $0.src.original,
-					largeUrl: $0.src.large
-				)
-			},
+			photos: responseModel.photos.map(\.entity),
 			previousFragmentUrl: responseModel.prevPage,
 			nextFragmentUrl: responseModel.nextPage
 		)

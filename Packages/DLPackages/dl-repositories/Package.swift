@@ -27,6 +27,12 @@ let package = Package(
 				"DLNetwork"
 			]
 		),
+		.library(
+			name: "DLPersistence",
+			targets: [
+				"DLPersistence"
+			]
+		),
 	],
 	dependencies: [
 		.package(path: "../dl-entities"),
@@ -41,6 +47,7 @@ let package = Package(
 			name: "DLRepositories",
 			dependencies: [
 				.target(name: "DLNetwork"),
+				.target(name: "DLPersistence"),
 
 				.product(name: "DLEntities", package: "dl-entities"),
 				.product(name: "DLUseCasesProtocols", package: "dl-use-cases-protocols"),
@@ -64,6 +71,7 @@ let package = Package(
 		.target(
 			name: "DLNetwork",
 			dependencies: [
+				.product(name: "DLEntities", package: "dl-entities"),
 				.product(name: "NetworkUtil", package: "network-util"),
 				.product(name: "Dependencies", package: "swift-dependencies"),
 				.product(name: "DLLogic", package: "dl-logic"),
@@ -78,6 +86,16 @@ let package = Package(
 
 				.product(name: "NetworkUtil", package: "network-util"),
 				.product(name: "Dependencies", package: "swift-dependencies"),
+			]
+		),
+
+		.target(
+			name: "DLPersistence",
+			dependencies: [
+				.product(name: "Dependencies", package: "swift-dependencies"),
+			],
+			resources: [
+				.process("Resources/db.xcdatamodeld"),
 			]
 		),
 

@@ -26,12 +26,12 @@ final class FeedRepositoryTest: XCTestCase {
 		// Given
 		let perPage = 5
 
-		let mockNetworkController = MockNetworkController<CuratedRequest, CuratedRequest.ResponseModel>(
+		let mockUrlClient = MockURLClient<CuratedRequest, CuratedRequest.ResponseModel>(
 			stubResponseModel: .stubFirstPage
 		)
 
 		sut = withDependencies {
-			$0.networkController = mockNetworkController
+			$0.repeatableUrlClient = mockUrlClient
 		} operation: {
 			FeedRepository()
 		}
@@ -42,10 +42,10 @@ final class FeedRepositoryTest: XCTestCase {
 		// Then
 		XCTAssertEqual(photosFragmentEntity, .stubFirstPage)
 
-		let resultUrlRequest = try XCTUnwrap(mockNetworkController.resultUrlRequest)
+		let resultUrlRequest = try XCTUnwrap(mockUrlClient.resultUrlRequest)
 		let resultUrl = URLComponents(url: resultUrlRequest.url!, resolvingAgainstBaseURL: false)!
 
-		let expectedUrlRequest = URLRequest(url: .init(string: "https://api.pexels.com/v1/curated/?page=1&per_page=\(perPage)")!)
+		let expectedUrlRequest = URLRequest(url: .init(string: "https://api.pexels.com/v1/curated?page=1&per_page=\(perPage)")!)
 		let expectedUrl = URLComponents(url: expectedUrlRequest.url!, resolvingAgainstBaseURL: false)!
 
 		let resultQuery = try XCTUnwrap(resultUrl.queryItems)
@@ -59,12 +59,12 @@ final class FeedRepositoryTest: XCTestCase {
 
 	func test_loadNextFragmentUrl_withCustomPhotosPerPageParam_ () async throws {
 		// Given
-		let mockNetworkController = MockNetworkController<NextCuratedRequest, CuratedRequest.ResponseModel>(
+		let mockUrlClient = MockURLClient<NextCuratedRequest, CuratedRequest.ResponseModel>(
 			stubResponseModel: .stubSecondPage
 		)
 
 		sut = withDependencies {
-			$0.networkController = mockNetworkController
+			$0.repeatableUrlClient = mockUrlClient
 		} operation: {
 			FeedRepository()
 		}
@@ -75,7 +75,7 @@ final class FeedRepositoryTest: XCTestCase {
 		// Then
 		XCTAssertEqual(nextPhotosFragmentEntity, .stubSecondPage)
 
-		let resultUrlRequest = try XCTUnwrap(mockNetworkController.resultUrlRequest)
+		let resultUrlRequest = try XCTUnwrap(mockUrlClient.resultUrlRequest)
 		let resultUrl = URLComponents(url: resultUrlRequest.url!, resolvingAgainstBaseURL: false)!
 
 		let expectedUrlRequest = URLRequest(url: .init(string: "https://api.pexels.com/v1/curated/?page=2&per_page=5")!)

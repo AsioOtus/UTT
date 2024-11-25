@@ -6,6 +6,7 @@
 //
 
 import Dependencies
+import DLEntities
 import DLNetwork
 import DLUseCasesDataProvidersProtocols
 import Foundation
@@ -13,13 +14,8 @@ import Foundation
 public struct PhotoDetailsRepository: PPhotoDetailsDataProvider {
 	@Dependency(\.urlClient) var urlClient
 
-	public func loadPhoto (url: URL) async throws -> Data {
-		try await urlClient
-			.send(
-				.get(url.absoluteString),
-				delegate: .standard(decoding: { data, _, _ in data })
-			)
-			.data
+	public func loadPhoto (id: Int) async throws -> PhotoEntity {
+		try await urlClient.send(PhotoRequest(id: id), responseModel: Photo.self).model.entity
 	}
 }
 
