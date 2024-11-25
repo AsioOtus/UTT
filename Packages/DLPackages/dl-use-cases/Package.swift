@@ -19,7 +19,7 @@ let package = Package(
 		.package(path: "../dl-entities"),
 		.package(path: "../dl-repositories"),
 
-			.package(url: "https://github.com/pointfreeco/swift-dependencies", exact: "1.3.0"),
+		.package(url: "https://github.com/pointfreeco/swift-dependencies", exact: "1.3.0"),
 	],
 	targets: [
 		.target(
@@ -28,7 +28,7 @@ let package = Package(
 				.product(name: "DLEntities", package: "dl-entities"),
 				.product(name: "DLRepositories", package: "dl-repositories"),
 
-					.product(name: "Dependencies", package: "swift-dependencies"),
+				.product(name: "Dependencies", package: "swift-dependencies"),
 			]
 		),
 

@@ -22,9 +22,11 @@ final class FeedFetchingUseCaseTests: XCTestCase {
 	func test_fetchPhotosFragmentPerPage_withDefaultParams_shouldReturnPhotos () async throws {
 		// Given
 		let mock = Mock.FeedDataProvider(stubValue: .stubFirstPage)
+		let persistentMock = Mock.PhotoPersistentRepository(stubValue: .stubBohr)
 
 		sut = withDependencies {
 			$0.feedDataProvider = mock
+			$0.photoDetailsPersistentDataProvider = persistentMock
 		} operation: {
 			FeedFetchingUseCase()
 		}
@@ -34,15 +36,17 @@ final class FeedFetchingUseCaseTests: XCTestCase {
 
 		// Then
 		XCTAssertEqual(photosFragment, .stubFirstPage)
-		XCTAssertEqual(mock.paramPhotosPerPage, 10)
+		XCTAssertEqual(mock.paramPhotosPerPage, 15)
 	}
 
 	func test_fetchPhotosFragmentPerPage_withCustomPerPageParam_shouldReturnPhotos () async throws {
 		// Given
 		let mock = Mock.FeedDataProvider(stubValue: .stubFirstPage)
+		let persistentMock = Mock.PhotoPersistentRepository(stubValue: .stubBohr)
 
 		sut = withDependencies {
 			$0.feedDataProvider = mock
+			$0.photoDetailsPersistentDataProvider = persistentMock
 		} operation: {
 			FeedFetchingUseCase()
 		}
@@ -75,9 +79,11 @@ final class FeedFetchingUseCaseTests: XCTestCase {
 	func test_fetchPhotosFragmentNextFragmentUrl_withValidUrlParam_shouldReturnPhotos () async throws {
 		// Given
 		let mock = Mock.FeedDataProvider(stubValue: .stubSecondPage)
+		let persistentMock = Mock.PhotoPersistentRepository(stubValue: .stubBohr)
 
 		sut = withDependencies {
 			$0.feedDataProvider = mock
+			$0.photoDetailsPersistentDataProvider = persistentMock
 		} operation: {
 			FeedFetchingUseCase()
 		}

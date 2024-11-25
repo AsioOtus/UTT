@@ -6,6 +6,7 @@
 //
 
 import Dependencies
+import DLEntities
 import DLRepositories
 import DLUseCasesDataProvidersProtocols
 import DLUseCasesProtocols
@@ -13,9 +14,20 @@ import Foundation
 
 public struct PhotoDetailsFetchingUseCase: PPhotoDetailsFetchingUseCase {
 	@Dependency(\.photoDetailsDataProvider) var photoDetailsDataProvider
+	@Dependency(\.photoDetailsPersistentDataProvider) var photoDetailsPersistentDataProvider
 
-	public func loadPhoto (url: URL) async throws -> Data {
-		try await photoDetailsDataProvider.loadPhoto(url: url)
+	public func loadPhoto (id: Int) async throws -> PhotoEntity {
+		do {
+			let photo = try await photoDetailsDataProvider.loadPhoto(id: id)
+			try? photoDetailsPersistentDataProvider.savePhoto(photo)
+			return photo
+		} catch let error as OfflineError {
+			if let photoEntity = try? photoDetailsPersistentDataProvider.loadPhoto(id: id) {
+				return photoEntity
+			} else {
+				throw error
+			}
+		}
 	}
 }
 
