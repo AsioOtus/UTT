@@ -5,6 +5,7 @@
 //  Created by Anton on 21/11/2024.
 //
 
+import DLPersistence
 import Kingfisher
 import SwiftUI
 
@@ -32,7 +33,7 @@ public struct CacheCleanupMenuView: View {
 				}
 
 				Button("Clear persistent storage", systemImage: "archivebox") {
-
+					CoreDataPersistentController.default.clear()
 				}
 
 				Divider()
@@ -42,6 +43,8 @@ public struct CacheCleanupMenuView: View {
 					try? ImageCache.default.diskStorage.removeAll()
 
 					URLCache.shared.removeAllCachedResponses()
+
+					CoreDataPersistentController.default.clear()
 				}
 			}
 		}

@@ -5,13 +5,14 @@
 //  Created by Anton on 21/11/2024.
 //
 
+import Kingfisher
 import SwiftUI
 
 public struct PhotoDetailsView: View {
 	@StateObject private var vm: PhotoDetailsVM<PhotoDetailsInteractor>
 
-	public init (url: URL) {
-		self._vm = .init(wrappedValue: .init(interactor: .init(url: url)))
+	public init (photoId: Int) {
+		self._vm = .init(wrappedValue: .init(interactor: .init(photoId: photoId)))
 	}
 
 	public var body: some View {
@@ -23,15 +24,15 @@ public struct PhotoDetailsView: View {
 private extension PhotoDetailsView {
 	@ViewBuilder
 	func contentView () -> some View {
-		switch vm.photo {
+		switch vm.photoModel {
 		case .initial:
 			initialView()
 
 		case .loading:
 			loadingView()
 
-		case .successful(let data):
-			successfulView(data)
+		case .successful(let photoModel):
+			successfulView(photoModel)
 
 		case .failed:
 			failedView()
@@ -47,11 +48,17 @@ private extension PhotoDetailsView {
 	}
 
 	@ViewBuilder
-	func successfulView (_ data: Data) -> some View {
-		if let image = UIImage(data: data) {
-			imageView(image)
-		} else {
-			failedView()
+	func successfulView (_ photoModel: PhotoModel) -> some View {
+		ScrollView {
+			VStack(spacing: 32) {
+				if vm.useLowQualityUrl {
+					imageView(photoModel.largeUrl)
+				} else {
+					imageView(photoModel.originalUrl)
+				}
+				photoDetailsView(photoModel)
+			}
+			.padding()
 		}
 	}
 
@@ -63,11 +70,40 @@ private extension PhotoDetailsView {
 		}
 	}
 
-	func imageView (_ image: UIImage) -> some View {
-		Image(uiImage: image)
+	@ViewBuilder
+	func imageView (_ photoUrl: URL) -> some View {
+		KFImage(photoUrl)
+			.placeholder(loadingView)
+			.onFailureImage(.init(systemName: "exclamationmark.octagon")?.withTintColor(.red))
+			.onFailure { error in
+				print(error)
+				vm.onImageLoadingFailed()
+			}
 			.resizable()
 			.aspectRatio(contentMode: .fit)
 			.clipShape(RoundedRectangle(cornerRadius: 20))
-			.padding()
+	}
+
+	func photoDetailsView (_ photoModel: PhotoModel) -> some View {
+		VStack(spacing: 16) {
+			photoDetailsRowView("Author", photoModel.photographer)
+			photoDetailsRowView("Description", photoModel.description)
+			photoDetailsRowView("Size", photoModel.size)
+			photoDetailsRowView("Photo ID", photoModel.id.description)
+			photoDetailsRowView("URL", photoModel.originalUrl.absoluteString)
+		}
+	}
+
+	func photoDetailsRowView (_ name: String, _ value: String) -> some View {
+		HStack(alignment: .top) {
+			Text(name)
+				.bold()
+
+			Spacer()
+
+			Text(value)
+				.multilineTextAlignment(.trailing)
+		}
+		.foregroundStyle(.secondary)
 	}
 }

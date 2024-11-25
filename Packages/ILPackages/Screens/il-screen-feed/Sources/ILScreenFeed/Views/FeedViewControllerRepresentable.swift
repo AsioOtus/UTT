@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct FeedViewControllerRepresentable: UIViewControllerRepresentable {
-	var presentedPhotoUrl: Binding<URL?>
+	var presentedPhotoId: Binding<Int?>
 
-	init (presentedPhotoUrl: Binding<URL?>) {
-		self.presentedPhotoUrl = presentedPhotoUrl
+	init (presentedPhotoId: Binding<Int?>) {
+		self.presentedPhotoId = presentedPhotoId
 	}
 
 	func makeUIViewController (context: Context) -> FeedCVC {
@@ -33,12 +33,12 @@ struct FeedViewControllerRepresentable: UIViewControllerRepresentable {
 			self.view = view
 		}
 
-		func navigate (_ url: URL?) {
-			view.presentedPhotoUrl.wrappedValue = url
+		func navigate (_ id: Int?) {
+			view.presentedPhotoId.wrappedValue = id
 		}
 	}
 }
 
 protocol FeedCoordinator {
-	func navigate (_ url: URL?)
+	func navigate (_ photoId: Int?)
 }

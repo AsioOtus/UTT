@@ -19,9 +19,9 @@ let package = Package(
 		.package(path: "../../../DLPackages/dl-entities"),
 		.package(path: "../../../DLPackages/dl-use-cases"),
 		.package(path: "../../../DLPackages/dl-use-cases-protocols"),
-		
+
 		.package(path: "../il-screen-photo-details"),
-		.package(path: "../il-components"),
+		.package(path: "../../il-components"),
 
 		.package(url: "https://github.com/onevcat/Kingfisher", exact: "7.12.0"),
 		.package(url: "https://github.com/AsioOtus/multitool", from: "1.0.0"),

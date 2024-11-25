@@ -46,7 +46,7 @@ extension FeedVM {
 
 	func onCellTap (_ indexPath: IndexPath) {
 		guard let selectedPhoto = dataSource?.snapshot().itemIdentifiers[indexPath.row] else { return }
-		coordinator?.navigate(selectedPhoto.originalUrl)
+		coordinator?.navigate(selectedPhoto.id)
 	}
 }
 
@@ -79,7 +79,7 @@ private extension FeedVM {
 						PhotoModel(
 							id: $0.id,
 							uiId: .init(),
-							photographerName: $0.photographerName,
+							photographerName: $0.photographerName + " " + $0.id.description,
 							largeUrl: $0.largeUrl,
 							originalUrl: $0.originalUrl
 						)

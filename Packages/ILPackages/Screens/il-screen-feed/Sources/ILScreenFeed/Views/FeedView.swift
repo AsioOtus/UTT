@@ -10,18 +10,18 @@ import ILScreenPhotoDetails
 import SwiftUI
 
 public struct FeedView: View {
-	@State private var presentedPhotoUrl: URL?
+	@State private var presentedPhotoId: Int?
 
 	public init () { }
 
-	private var isPresentedPhotoUrlActive: Binding<Bool> {
+	private var isPresentedPhotoIdActive: Binding<Bool> {
 		.init(
 			get: {
-				presentedPhotoUrl != nil
+				presentedPhotoId != nil
 			},
 			set: {
 				if !$0 {
-					presentedPhotoUrl = nil
+					presentedPhotoId = nil
 				}
 			}
 		)
@@ -29,13 +29,13 @@ public struct FeedView: View {
 
 	public var body: some View {
 		NavigationStack {
-			FeedViewControllerRepresentable(presentedPhotoUrl: $presentedPhotoUrl)
+			FeedViewControllerRepresentable(presentedPhotoId: $presentedPhotoId)
 				.navigationBarTitleDisplayMode(.inline)
 				.navigationTitle("Curated photos")
 				.ignoresSafeArea()
-				.navigationDestination(isPresented: isPresentedPhotoUrlActive) {
-					if let url = presentedPhotoUrl {
-						PhotoDetailsView(url: url)
+				.navigationDestination(isPresented: isPresentedPhotoIdActive) {
+					if let photoId = presentedPhotoId {
+						PhotoDetailsView(photoId: photoId)
 					}
 				}
 				.toolbar {

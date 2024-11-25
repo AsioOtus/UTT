@@ -16,12 +16,16 @@ let package = Package(
 		)
 	],
 	dependencies: [
+		.package(path: "../../DLPackages/dl-repositories"),
+
 		.package(url: "https://github.com/onevcat/Kingfisher", exact: "7.12.0"),
 	],
 	targets: [
 		.target(
 			name: "ILComponents",
 			dependencies: [
+				.product(name: "DLPersistence", package: "dl-repositories"),
+
 				.product(name: "Kingfisher", package: "Kingfisher"),
 			]
 		)

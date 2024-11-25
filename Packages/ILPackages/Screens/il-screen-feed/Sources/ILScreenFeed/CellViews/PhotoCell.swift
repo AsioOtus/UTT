@@ -64,8 +64,6 @@ final class PhotoCell: UICollectionViewCell, XibInstantiatable {
 			with: photo.largeUrl,
 			placeholder: placeholder,
 			options: [
-				.cacheSerializer(FormatIndicatedCacheSerializer.png),
-				.processor(RoundCornerImageProcessor(cornerRadius: 38)),
 				.downloadPriority(URLSessionTask.lowPriority),
 			]
 		) { [weak self] result in
@@ -84,11 +82,9 @@ final class PhotoCell: UICollectionViewCell, XibInstantiatable {
 		hideReloadView()
 
 		photoLoadingTask = imageView.kf.setImage(
-			with: photo.largeUrl,
+			with: KF.ImageResource(downloadURL: photo.largeUrl, cacheKey: photo.id.description),
 			placeholder: placeholder,
 			options: [
-				.cacheSerializer(FormatIndicatedCacheSerializer.png),
-				.processor(RoundCornerImageProcessor(cornerRadius: 38)),
 				.downloadPriority(URLSessionTask.lowPriority),
 				.forceRefresh,
 			]

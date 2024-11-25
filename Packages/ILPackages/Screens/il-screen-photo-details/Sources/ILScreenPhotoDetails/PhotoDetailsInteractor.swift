@@ -6,33 +6,41 @@
 //
 
 import Dependencies
+import DLEntities
 import DLUseCases
 import Foundation
 import Multitool
 
 protocol PPhotoDetailsInteractor: ObservableObject {
-	var photo: Loadable<Data> { get }
+	var photoDetails: Loadable<PhotoEntity> { get }
+	var useLowQualityUrl: Bool { get }
 
-	func loadPhoto ()
+	func loadPhotoDetails ()
+	func downgradePhotoUrl ()
 }
 
 class PhotoDetailsInteractor: PPhotoDetailsInteractor {
 	@Dependency(\.photoDetailsFetchingUseCase) var photoDetailsFetchingUseCase
 
-	let url: URL
-	@Published var photo: Loadable<Data> = .initial
+	let photoId: Int
+	@Published var photoDetails: Loadable<PhotoEntity> = .initial
+	@Published var useLowQualityUrl: Bool = false
 
-	init (url: URL) {
-		self.url = url
+	init (photoId: Int) {
+		self.photoId = photoId
 	}
 
-	func loadPhoto () {
-		photo.setLoading {
+	func loadPhotoDetails () {
+		photoDetails.setLoading {
 			Task {
-				photo = await Loadable<Data>.result {
-					try await photoDetailsFetchingUseCase.loadPhoto(url: url)
+				photoDetails = await Loadable<PhotoEntity>.result {
+					try await photoDetailsFetchingUseCase.loadPhoto(id: photoId)
 				}
 			}
 		}
+	}
+
+	func downgradePhotoUrl () {
+		useLowQualityUrl = true
 	}
 }

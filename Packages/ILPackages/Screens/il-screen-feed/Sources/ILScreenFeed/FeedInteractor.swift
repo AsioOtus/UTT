@@ -84,7 +84,6 @@ private extension FeedInteractor {
 		let loadingTask = Task<Void, Error> {
 			let result = await Loadable<PhotosFragmentEntity> {
 				let photoFragment = try await loadingAction()
-				print(photoFragment.photos.map { $0.id })
 				lastLoadedFragment = photoFragment
 				return photoFragment
 			}
