@@ -5,8 +5,9 @@
 //  Created by Anton on 21/11/2024.
 //
 
+import DLEntities
 import Foundation
 
 public protocol PPhotoDetailsDataProvider {
-	func loadPhoto (url: URL) async throws -> Data
+	func loadPhoto (id: Int) async throws -> PhotoEntity
 }

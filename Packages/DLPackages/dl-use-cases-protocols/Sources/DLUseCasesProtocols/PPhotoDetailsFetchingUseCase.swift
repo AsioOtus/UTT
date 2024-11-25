@@ -9,6 +9,6 @@ import DLEntities
 import Foundation
 
 public protocol PPhotoDetailsFetchingUseCase {
-	func loadPhoto (url: URL) async throws -> Data
+	func loadPhoto (id: Int) async throws -> PhotoEntity
 }
 
