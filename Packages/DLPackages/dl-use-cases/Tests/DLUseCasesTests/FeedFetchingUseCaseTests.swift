@@ -6,6 +6,7 @@
 //
 
 import Dependencies
+import DLEntities
 import DLRepositoriesMocks
 import DLEntitiesStubs
 import XCTest
@@ -22,7 +23,7 @@ final class FeedFetchingUseCaseTests: XCTestCase {
 	func test_fetchPhotosFragmentPerPage_withDefaultParams_shouldReturnPhotos () async throws {
 		// Given
 		let mock = Mock.FeedDataProvider(stubValue: .stubFirstPage)
-		let persistentMock = Mock.PhotoPersistentRepository(stubValue: .stubBohr)
+		let persistentMock = Mock.PhotoDetailsPersistentDataProvider(stubValue: .stubBohr)
 
 		sut = withDependencies {
 			$0.feedDataProvider = mock
@@ -37,12 +38,13 @@ final class FeedFetchingUseCaseTests: XCTestCase {
 		// Then
 		XCTAssertEqual(photosFragment, .stubFirstPage)
 		XCTAssertEqual(mock.paramPhotosPerPage, 15)
+		XCTAssertEqual(persistentMock.paramPhotoEntities, PhotosFragmentEntity.stubFirstPage.photos)
 	}
 
 	func test_fetchPhotosFragmentPerPage_withCustomPerPageParam_shouldReturnPhotos () async throws {
 		// Given
 		let mock = Mock.FeedDataProvider(stubValue: .stubFirstPage)
-		let persistentMock = Mock.PhotoPersistentRepository(stubValue: .stubBohr)
+		let persistentMock = Mock.PhotoDetailsPersistentDataProvider(stubValue: .stubBohr)
 
 		sut = withDependencies {
 			$0.feedDataProvider = mock
@@ -57,6 +59,7 @@ final class FeedFetchingUseCaseTests: XCTestCase {
 		// Then
 		XCTAssertEqual(photosFragment, .stubFirstPage)
 		XCTAssertEqual(mock.paramPhotosPerPage, 55)
+		XCTAssertEqual(persistentMock.paramPhotoEntities, PhotosFragmentEntity.stubFirstPage.photos)
 	}
 
 	func test_fetchPhotosFragmentPerPage_withDefaultParams_shouldThrow () async {
@@ -79,7 +82,7 @@ final class FeedFetchingUseCaseTests: XCTestCase {
 	func test_fetchPhotosFragmentNextFragmentUrl_withValidUrlParam_shouldReturnPhotos () async throws {
 		// Given
 		let mock = Mock.FeedDataProvider(stubValue: .stubSecondPage)
-		let persistentMock = Mock.PhotoPersistentRepository(stubValue: .stubBohr)
+		let persistentMock = Mock.PhotoDetailsPersistentDataProvider(stubValue: .stubBohr)
 
 		sut = withDependencies {
 			$0.feedDataProvider = mock
@@ -94,6 +97,7 @@ final class FeedFetchingUseCaseTests: XCTestCase {
 		// Then
 		XCTAssertEqual(photosFragment, .stubSecondPage)
 		XCTAssertEqual(mock.paramNextFragmentUrl, .stubNextFragment)
+		XCTAssertEqual(persistentMock.paramPhotoEntities, PhotosFragmentEntity.stubSecondPage.photos)
 	}
 }
 

@@ -17,11 +17,17 @@ extension Mock {
 			self.stubValue = stubValue
 		}
 
-		public func savePhoto(_ photoEntity: PhotoEntity) throws { }
+		public var paramPhotoEntity: PhotoEntity?
+		public func savePhoto (_ photoEntity: PhotoEntity) throws {
+			paramPhotoEntity = photoEntity
+		}
 
-		public func savePhotos(_ photoEntities: [PhotoEntity]) throws { }
+		public var paramPhotoEntities: [PhotoEntity]?
+		public func savePhotos (_ photoEntities: [PhotoEntity]) throws {
+			paramPhotoEntities = photoEntities
+		}
 
-		public func loadPhoto(id: Int) throws -> PhotoEntity? {
+		public func loadPhoto (id: Int) throws -> PhotoEntity? {
 			stubValue
 		}
 	}
@@ -29,18 +35,22 @@ extension Mock {
 
 extension Mock.Throwing {
 	public final class PhotoDetailsPersistentDataProvider: PPhotoDetailsPersistentDataProvider {
-		public init () { }
+		public let error: Error?
 
-		public func savePhoto(_ photoEntity: PhotoEntity) throws {
-			throw TestError.instance
+		public init (error: Error? = nil) {
+			self.error = error
 		}
 
-		public func savePhotos(_ photoEntities: [PhotoEntity]) throws {
-			throw TestError.instance
+		public func savePhoto (_ photoEntity: PhotoEntity) throws {
+			throw (error ?? TestError.instance)
 		}
 
-		public func loadPhoto(id: Int) throws -> PhotoEntity? {
-			throw TestError.instance
+		public func savePhotos (_ photoEntities: [PhotoEntity]) throws {
+			throw (error ?? TestError.instance)
+		}
+
+		public func loadPhoto (id: Int) throws -> PhotoEntity? {
+			throw (error ?? TestError.instance)
 		}
 	}
 }

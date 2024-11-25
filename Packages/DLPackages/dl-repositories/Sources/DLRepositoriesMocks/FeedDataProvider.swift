@@ -33,14 +33,18 @@ extension Mock {
 
 extension Mock.Throwing {
 	public final class FeedDataProvider: PFeedDataProvider {
-		public init () { }
+		public let error: Error?
+
+		public init (error: Error? = nil) {
+			self.error = error
+		}
 
 		public func load (photosPerPage: Int) async throws -> PhotosFragmentEntity {
-			throw TestError.instance
+			throw (error ?? TestError.instance)
 		}
 
 		public func load (nextFragmentUrl: URL) async throws -> PhotosFragmentEntity {
-			throw TestError.instance
+			throw (error ?? TestError.instance)
 		}
 	}
 }
