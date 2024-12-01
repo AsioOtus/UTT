@@ -20,10 +20,15 @@ protocol PFeedInteractor {
 }
 
 actor FeedInteractor: PFeedInteractor {
-	let feedFetchingUseCase: PFeedFetchingUseCase
+	let feedDataProvider: PFeedDataProvider
+	let photoDetailsPersistentDataProvider: PPhotoDetailsPersistentDataProvider
 
-	init (feedFetchingUseCase: PFeedFetchingUseCase) {
-		self.feedFetchingUseCase = feedFetchingUseCase
+	init (
+		feedDataProvider: PFeedDataProvider,
+		photoDetailsPersistentDataProvider: PPhotoDetailsPersistentDataProvider
+	) {
+		self.feedDataProvider = feedDataProvider
+		self.photoDetailsPersistentDataProvider = photoDetailsPersistentDataProvider
 	}
 
 	let photosPerPage = 20
@@ -66,7 +71,9 @@ extension FeedInteractor {
 private extension FeedInteractor {
 	func loadFirstFragment () {
 		loadPhotoFragment {
-			try await self.feedFetchingUseCase.fetchPhotosFragment(perPage: self.photosPerPage)
+			let photoFragment = try await self.feedDataProvider.load(photosPerPage: self.photosPerPage)
+			try? self.photoDetailsPersistentDataProvider.savePhotos(photoFragment.photos)
+			return photoFragment
 		}
 	}
 
@@ -74,7 +81,9 @@ private extension FeedInteractor {
 		guard let nextFragmentUrl = lastFragment.nextFragmentUrl else { return }
 
 		loadPhotoFragment {
-			try await self.feedFetchingUseCase.fetchPhotosFragment(nextFragmentUrl: nextFragmentUrl)
+			let photoFragment = try await self.feedDataProvider.load(nextFragmentUrl: nextFragmentUrl)
+			try? self.photoDetailsPersistentDataProvider.savePhotos(photoFragment.photos)
+			return photoFragment
 		}
 	}
 

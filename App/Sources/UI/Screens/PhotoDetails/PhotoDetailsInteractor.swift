@@ -17,22 +17,38 @@ protocol PPhotoDetailsInteractor: ObservableObject {
 }
 
 class PhotoDetailsInteractor: PPhotoDetailsInteractor {
-	let photoDetailsFetchingUseCase: PPhotoDetailsFetchingUseCase
+	let photoDetailsDataProvider: PPhotoDetailsDataProvider
+	let photoDetailsPersistentDataProvider: PPhotoDetailsPersistentDataProvider
 
 	let photoId: Int
 	@Published var photoDetails: Loadable<PhotoEntity> = .initial
 	@Published var useLowQualityUrl: Bool = false
 
-	init (photoId: Int, photoDetailsFetchingUseCase: PPhotoDetailsFetchingUseCase) {
+	init (
+		photoId: Int,
+		photoDetailsDataProvider: PPhotoDetailsDataProvider,
+		photoDetailsPersistentDataProvider: PPhotoDetailsPersistentDataProvider
+	) {
 		self.photoId = photoId
-		self.photoDetailsFetchingUseCase = photoDetailsFetchingUseCase
+		self.photoDetailsDataProvider = photoDetailsDataProvider
+		self.photoDetailsPersistentDataProvider = photoDetailsPersistentDataProvider
 	}
 
 	func loadPhotoDetails () {
 		photoDetails.setLoading {
 			Task {
 				photoDetails = await Loadable<PhotoEntity>.result {
-					try await photoDetailsFetchingUseCase.loadPhoto(id: photoId)
+					do {
+						let photo = try await photoDetailsDataProvider.loadPhoto(id: photoId)
+						try? photoDetailsPersistentDataProvider.savePhoto(photo)
+						return photo
+					} catch let error as OfflineError {
+						if let photoEntity = try? photoDetailsPersistentDataProvider.loadPhoto(id: photoId) {
+							return photoEntity
+						} else {
+							throw error
+						}
+					}
 				}
 			}
 		}

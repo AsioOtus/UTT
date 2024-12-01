@@ -11,12 +11,9 @@ struct FeedFactory {
 	func produce () -> FeedVM {
 		.init(
 			interactor: FeedInteractor(
-				feedFetchingUseCase: FeedFetchingUseCase(
-					feedDataProvider: FeedRepository(),
-					photoDetailsPersistentDataProvider: PhotoPersistentRepository()
-				)
+				feedDataProvider: FeedRepository(),
+				photoDetailsPersistentDataProvider: PhotoPersistentRepository()
 			)
 		)
 	}
 }
-

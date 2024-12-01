@@ -12,10 +12,8 @@ struct PhotoDetailFactory {
 		.init(
 			interactor: .init(
 				photoId: photoId,
-				photoDetailsFetchingUseCase: PhotoDetailsFetchingUseCase(
-					photoDetailsDataProvider: PhotoDetailsRepository(),
-					photoDetailsPersistentDataProvider: PhotoPersistentRepository()
-				)
+				photoDetailsDataProvider: PhotoDetailsRepository(),
+				photoDetailsPersistentDataProvider: PhotoPersistentRepository()
 			)
 		)
 	}
