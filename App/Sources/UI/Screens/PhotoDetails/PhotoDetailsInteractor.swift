@@ -5,7 +5,6 @@
 //  Created by Anton on 21/11/2024.
 //
 
-import Dependencies
 import Foundation
 import Multitool
 
@@ -18,14 +17,15 @@ protocol PPhotoDetailsInteractor: ObservableObject {
 }
 
 class PhotoDetailsInteractor: PPhotoDetailsInteractor {
-	@Dependency(\.photoDetailsFetchingUseCase) var photoDetailsFetchingUseCase
+	let photoDetailsFetchingUseCase: PPhotoDetailsFetchingUseCase
 
 	let photoId: Int
 	@Published var photoDetails: Loadable<PhotoEntity> = .initial
 	@Published var useLowQualityUrl: Bool = false
 
-	init (photoId: Int) {
+	init (photoId: Int, photoDetailsFetchingUseCase: PPhotoDetailsFetchingUseCase) {
 		self.photoId = photoId
+		self.photoDetailsFetchingUseCase = photoDetailsFetchingUseCase
 	}
 
 	func loadPhotoDetails () {

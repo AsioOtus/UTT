@@ -12,7 +12,9 @@ public struct PhotoDetailsView: View {
 	@StateObject private var vm: PhotoDetailsVM<PhotoDetailsInteractor>
 
 	public init (photoId: Int) {
-		self._vm = .init(wrappedValue: .init(interactor: .init(photoId: photoId)))
+		self._vm = .init(
+			wrappedValue: PhotoDetailFactory.default.produce(photoId: photoId)
+		)
 	}
 
 	public var body: some View {

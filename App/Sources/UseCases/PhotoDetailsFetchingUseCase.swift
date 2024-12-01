@@ -5,12 +5,11 @@
 //  Created by Anton on 21/11/2024.
 //
 
-import Dependencies
 import Foundation
 
 public struct PhotoDetailsFetchingUseCase: PPhotoDetailsFetchingUseCase {
-	@Dependency(\.photoDetailsDataProvider) var photoDetailsDataProvider
-	@Dependency(\.photoDetailsPersistentDataProvider) var photoDetailsPersistentDataProvider
+	let photoDetailsDataProvider: PPhotoDetailsDataProvider
+	let photoDetailsPersistentDataProvider: PPhotoDetailsPersistentDataProvider
 
 	public func loadPhoto (id: Int) async throws -> PhotoEntity {
 		do {
@@ -26,17 +25,3 @@ public struct PhotoDetailsFetchingUseCase: PPhotoDetailsFetchingUseCase {
 		}
 	}
 }
-
-enum PhotoDetailsFetchingUseCaseDependencyKey: DependencyKey {
-	public static var liveValue: any PPhotoDetailsFetchingUseCase {
-		PhotoDetailsFetchingUseCase()
-	}
-}
-
-public extension DependencyValues {
-	var photoDetailsFetchingUseCase: any PPhotoDetailsFetchingUseCase {
-		get { self[PhotoDetailsFetchingUseCaseDependencyKey.self] }
-		set { self[PhotoDetailsFetchingUseCaseDependencyKey.self] = newValue }
-	}
-}
-

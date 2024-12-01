@@ -12,7 +12,6 @@
 		3A188EB32CFCFD82008B0BEF /* MultitoolTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 3A188EB22CFCFD82008B0BEF /* MultitoolTesting */; };
 		3A188EB62CFCFD8E008B0BEF /* SwiftUIExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 3A188EB52CFCFD8E008B0BEF /* SwiftUIExtensions */; };
 		3A188EB82CFCFD8E008B0BEF /* UIKitExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 3A188EB72CFCFD8E008B0BEF /* UIKitExtensions */; };
-		3A188EF82CFCFEF3008B0BEF /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 3A188EF72CFCFEF3008B0BEF /* Dependencies */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +53,7 @@
 				Sources/UI/Screens/Feed/CellViews/ReloadPhotoView.swift,
 				Sources/UI/Screens/Feed/CellViews/ReloadPhotoView.xib,
 				Sources/UI/Screens/Feed/CellViews/ShadowView.swift,
+				Sources/UI/Screens/Feed/FeedFactory.swift,
 				Sources/UI/Screens/Feed/FeedFooterViews/FeedFooterEmptyView.swift,
 				Sources/UI/Screens/Feed/FeedFooterViews/FeedFooterErrorView.swift,
 				Sources/UI/Screens/Feed/FeedFooterViews/FeedFooterErrorView.xib,
@@ -70,6 +70,7 @@
 				Sources/UI/Screens/Feed/Views/FeedView.swift,
 				Sources/UI/Screens/Feed/Views/FeedViewControllerRepresentable.swift,
 				Sources/UI/Screens/PhotoDetails/Models/PhotoModel.swift,
+				Sources/UI/Screens/PhotoDetails/PhotoDetailFactory.swift,
 				Sources/UI/Screens/PhotoDetails/PhotoDetailsInteractor.swift,
 				Sources/UI/Screens/PhotoDetails/PhotoDetailsView.swift,
 				Sources/UI/Screens/PhotoDetails/PhotoDetailsVM.swift,
@@ -118,7 +119,6 @@
 				3A188EB62CFCFD8E008B0BEF /* SwiftUIExtensions in Frameworks */,
 				3A188EB32CFCFD82008B0BEF /* MultitoolTesting in Frameworks */,
 				3A188EAE2CFCFD77008B0BEF /* Kingfisher in Frameworks */,
-				3A188EF82CFCFEF3008B0BEF /* Dependencies in Frameworks */,
 				3A188EB12CFCFD82008B0BEF /* Multitool in Frameworks */,
 				3A188EB82CFCFD8E008B0BEF /* UIKitExtensions in Frameworks */,
 			);
@@ -173,7 +173,6 @@
 				3A188EB22CFCFD82008B0BEF /* MultitoolTesting */,
 				3A188EB52CFCFD8E008B0BEF /* SwiftUIExtensions */,
 				3A188EB72CFCFD8E008B0BEF /* UIKitExtensions */,
-				3A188EF72CFCFEF3008B0BEF /* Dependencies */,
 			);
 			productName = App;
 			productReference = 3A52F7202CEE8E48004ACA9F /* App.app */;
@@ -207,7 +206,6 @@
 				3A188EAC2CFCFD77008B0BEF /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				3A188EAF2CFCFD82008B0BEF /* XCRemoteSwiftPackageReference "Multitool" */,
 				3A188EB42CFCFD8E008B0BEF /* XCRemoteSwiftPackageReference "ui-extensions" */,
-				3A188EF62CFCFEF3008B0BEF /* XCRemoteSwiftPackageReference "swift-dependencies" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3A52F7092CEE8D9C004ACA9F /* Products */;
@@ -483,14 +481,6 @@
 				minimumVersion = 1.0.5;
 			};
 		};
-		3A188EF62CFCFEF3008B0BEF /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-dependencies";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.6.1;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -518,11 +508,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3A188EB42CFCFD8E008B0BEF /* XCRemoteSwiftPackageReference "ui-extensions" */;
 			productName = UIKitExtensions;
-		};
-		3A188EF72CFCFEF3008B0BEF /* Dependencies */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3A188EF62CFCFEF3008B0BEF /* XCRemoteSwiftPackageReference "swift-dependencies" */;
-			productName = Dependencies;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

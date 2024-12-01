@@ -5,7 +5,6 @@
 //  Created by Anton on 20/11/2024.
 //
 
-import Dependencies
 import Kingfisher
 import SwiftUI
 

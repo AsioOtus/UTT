@@ -6,7 +6,6 @@
 //
 
 import Combine
-import Dependencies
 import Foundation
 import Multitool
 
@@ -21,7 +20,11 @@ protocol PFeedInteractor {
 }
 
 actor FeedInteractor: PFeedInteractor {
-	@Dependency(\.feedFetchingUseCase) var feedFetchingUseCase
+	let feedFetchingUseCase: PFeedFetchingUseCase
+
+	init (feedFetchingUseCase: PFeedFetchingUseCase) {
+		self.feedFetchingUseCase = feedFetchingUseCase
+	}
 
 	let photosPerPage = 20
 

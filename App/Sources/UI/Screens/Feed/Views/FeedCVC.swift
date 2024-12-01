@@ -15,7 +15,7 @@ import UIKitExtensions
 public final class FeedCVC: UICollectionViewController, StoryboardInstantiatable {
 	private var subscriptions = Set<AnyCancellable>()
 
-	let vm = FeedVM(interactor: FeedInteractor())
+	let vm = FeedFactory.default.produce()
 }
 
 public extension FeedCVC {

@@ -5,7 +5,6 @@
 //  Created by Anton on 21/11/2024.
 //
 
-import Dependencies
 import Foundation
 
 public struct PhotoPersistentRepository: PPhotoDetailsPersistentDataProvider {
@@ -67,17 +66,3 @@ private extension PhotoPersistentRepository {
 		)
 	}
 }
-
-enum PhotoPersistentRepositoryDependencyKey: DependencyKey {
-	public static var liveValue: any PPhotoDetailsPersistentDataProvider {
-		PhotoPersistentRepository()
-	}
-}
-
-public extension DependencyValues {
-	var photoDetailsPersistentDataProvider: any PPhotoDetailsPersistentDataProvider {
-		get { self[PhotoPersistentRepositoryDependencyKey.self] }
-		set { self[PhotoPersistentRepositoryDependencyKey.self] = newValue }
-	}
-}
-

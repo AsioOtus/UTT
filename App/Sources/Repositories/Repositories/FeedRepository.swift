@@ -5,7 +5,6 @@
 //  Created by Anton on 21/11/2024.
 //
 
-import Dependencies
 import Foundation
 
 struct FeedRepository: PFeedDataProvider {
@@ -41,18 +40,5 @@ private extension FeedRepository {
 			previousFragmentUrl: responseModel.prevPage,
 			nextFragmentUrl: responseModel.nextPage
 		)
-	}
-}
-
-enum FeedDataProviderDependencyKey: DependencyKey {
-	public static var liveValue: any PFeedDataProvider {
-		FeedRepository()
-	}
-}
-
-public extension DependencyValues {
-	var feedDataProvider: any PFeedDataProvider {
-		get { self[FeedDataProviderDependencyKey.self] }
-		set { self[FeedDataProviderDependencyKey.self] = newValue }
 	}
 }
