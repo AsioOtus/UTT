@@ -1,4 +1,5 @@
 {
+  "originHash" : "0d6d23d09ae290b6595ee13d43b9b9ecb82307ee4ca907f6d7aff318deaadece",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -14,23 +15,23 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/onevcat/Kingfisher",
       "state" : {
-        "revision" : "2ef543ee21d63734e1c004ad6c870255e8716c50",
-        "version" : "7.12.0"
+        "revision" : "b6256f191b4c1d8d09f4df94bae69e5ac6e42c81",
+        "version" : "8.1.1"
       }
     },
     {
       "identity" : "multitool",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/AsioOtus/multitool",
+      "location" : "https://github.com/AsioOtus/Multitool",
       "state" : {
         "revision" : "c28b7e8c8d3734952dfb22c922d1a46130fb9e35",
         "version" : "1.0.37"
       }
     },
     {
-      "identity" : "network-util",
+      "identity" : "networkutil",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/AsioOtus/network-util",
+      "location" : "https://github.com/AsioOtus/NetworkUtil",
       "state" : {
         "revision" : "f3f8cf71e21bdd0fae0659e7dc272a9f770601ea",
         "version" : "2.1.4"
@@ -59,14 +60,14 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-dependencies",
       "state" : {
-        "revision" : "350e1e119babe8525f9bd155b76640a5de270184",
-        "version" : "1.3.0"
+        "revision" : "7d2eb4ad20efb2838269645410d26b64ca48d8aa",
+        "version" : "1.6.1"
       }
     },
     {
       "identity" : "swift-syntax",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-syntax",
+      "location" : "https://github.com/swiftlang/swift-syntax",
       "state" : {
         "revision" : "2bc86522d115234d1f588efe2bcb4ce4be8f8b82",
         "version" : "510.0.3"
@@ -91,5 +92,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

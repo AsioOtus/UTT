@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A97C4EF2CEEB038007D844D /* DLNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 3A97C4EE2CEEB038007D844D /* DLNetwork */; };
-		3A97C4F32CEEB04F007D844D /* ILScreenRoot in Frameworks */ = {isa = PBXBuildFile; productRef = 3A97C4F22CEEB04F007D844D /* ILScreenRoot */; };
+		3A188EAE2CFCFD77008B0BEF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3A188EAD2CFCFD77008B0BEF /* Kingfisher */; };
+		3A188EB12CFCFD82008B0BEF /* Multitool in Frameworks */ = {isa = PBXBuildFile; productRef = 3A188EB02CFCFD82008B0BEF /* Multitool */; };
+		3A188EB32CFCFD82008B0BEF /* MultitoolTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 3A188EB22CFCFD82008B0BEF /* MultitoolTesting */; };
+		3A188EB62CFCFD8E008B0BEF /* SwiftUIExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 3A188EB52CFCFD8E008B0BEF /* SwiftUIExtensions */; };
+		3A188EB82CFCFD8E008B0BEF /* UIKitExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 3A188EB72CFCFD8E008B0BEF /* UIKitExtensions */; };
+		3A188EF82CFCFEF3008B0BEF /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 3A188EF72CFCFEF3008B0BEF /* Dependencies */; };
+		3A188EFF2CFCFF01008B0BEF /* NetworkUtil in Frameworks */ = {isa = PBXBuildFile; productRef = 3A188EFE2CFCFF01008B0BEF /* NetworkUtil */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,24 +24,94 @@
 		3A97C5072CEEB25B007D844D /* Exceptions for "App" folder in "App" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Sources/Entities/Entities/Entities/PhotoEntity.swift,
+				Sources/Entities/Entities/Entities/PhotoFragmentEntity.swift,
+				Sources/Entities/Entities/Errors/OfflineError.swift,
+				"Sources/Entities/EntitiesStubs/PhotoEntity+stubs.swift",
+				"Sources/Entities/EntitiesStubs/PhotoFragmentEntity+stubs.swift",
+				"Sources/Entities/EntitiesStubs/URL+stubs.swift",
+				Sources/Repositories/Network/Models/Photo.swift,
+				Sources/Repositories/Network/NetworkConnectivityURLClientDependencyKey.swift,
+				Sources/Repositories/Network/OfflineDecorator.swift,
+				Sources/Repositories/Network/RepeatableURLClientDependencyKey.swift,
+				Sources/Repositories/Network/Requests/CuratedRequest.swift,
+				Sources/Repositories/Network/Requests/NextCuratedRequest.swift,
+				Sources/Repositories/Network/Requests/PhotoRequest.swift,
+				Sources/Repositories/Network/URLClientDependencyKey.swift,
+				"Sources/Repositories/NetworkStubs/CuratedRequest.ResponseModel+stubs.swift",
+				Sources/Repositories/Persistence/CoreDataPersistentController.swift,
+				Sources/Repositories/Persistence/DBEntities/DBEntity.swift,
+				Sources/Repositories/Persistence/DBEntities/PhotoDBEntity.swift,
+				Sources/Repositories/Persistence/Errors/PersistenceError.swift,
+				Sources/Repositories/Repositories/FeedRepository.swift,
+				Sources/Repositories/Repositories/PhotoDetailsRepository.swift,
+				Sources/Repositories/Repositories/PhotoPersistentRepository.swift,
+				Sources/Repositories/RepositoriesMocks/FeedDataProvider.swift,
+				Sources/Repositories/RepositoriesMocks/Mock.swift,
+				Sources/Repositories/RepositoriesMocks/Mock.Throwing.swift,
+				Sources/Repositories/RepositoriesMocks/PhotoDetailsDataProvider.swift,
+				Sources/Repositories/RepositoriesMocks/PhotoDetailsPersistentDataProvider.swift,
+				Sources/Repositories/RepositoriesMocks/TestError.swift,
+				Sources/UI/Components/CacheCleanupMenu/CacheCleanupMenuView.swift,
+				Sources/UI/Screens/Feed/CellViews/PhotoCell.swift,
+				Sources/UI/Screens/Feed/CellViews/PhotoCell.xib,
+				Sources/UI/Screens/Feed/CellViews/PhotoImageView.swift,
+				Sources/UI/Screens/Feed/CellViews/PlaceholderView.swift,
+				Sources/UI/Screens/Feed/CellViews/ReloadPhotoView.swift,
+				Sources/UI/Screens/Feed/CellViews/ReloadPhotoView.xib,
+				Sources/UI/Screens/Feed/CellViews/ShadowView.swift,
+				Sources/UI/Screens/Feed/FeedFooterViews/FeedFooterEmptyView.swift,
+				Sources/UI/Screens/Feed/FeedFooterViews/FeedFooterErrorView.swift,
+				Sources/UI/Screens/Feed/FeedFooterViews/FeedFooterErrorView.xib,
+				Sources/UI/Screens/Feed/FeedFooterViews/FeedFooterInfoView.swift,
+				Sources/UI/Screens/Feed/FeedFooterViews/FeedFooterInfoView.xib,
+				Sources/UI/Screens/Feed/FeedFooterViews/FeedFooterLoadingView.swift,
+				Sources/UI/Screens/Feed/FeedFooterViews/FeedFooterLoadingView.xib,
+				Sources/UI/Screens/Feed/FeedInteractor.swift,
+				Sources/UI/Screens/Feed/FeedVM.swift,
+				Sources/UI/Screens/Feed/Models/FeedDataSource.swift,
+				Sources/UI/Screens/Feed/Models/FeedPhotoModel.swift,
+				Sources/UI/Screens/Feed/Views/FeedCVC.storyboard,
+				Sources/UI/Screens/Feed/Views/FeedCVC.swift,
+				Sources/UI/Screens/Feed/Views/FeedView.swift,
+				Sources/UI/Screens/Feed/Views/FeedViewControllerRepresentable.swift,
+				Sources/UI/Screens/PhotoDetails/Models/PhotoModel.swift,
+				Sources/UI/Screens/PhotoDetails/PhotoDetailsInteractor.swift,
+				Sources/UI/Screens/PhotoDetails/PhotoDetailsView.swift,
+				Sources/UI/Screens/PhotoDetails/PhotoDetailsVM.swift,
+				Sources/UI/Screens/Root/RootScreen.swift,
+				Sources/UseCaseProtocols/UseCasesDataProvidersProtocols/PFeedDataProvider.swift,
+				Sources/UseCaseProtocols/UseCasesDataProvidersProtocols/PPhotoDetailsDataProvider.swift,
+				Sources/UseCaseProtocols/UseCasesDataProvidersProtocols/PPhotoDetailsPersistentDataProvider.swift,
+				Sources/UseCaseProtocols/UseCasesProtocols/PFeedFetchingUseCase.swift,
+				Sources/UseCaseProtocols/UseCasesProtocols/PPhotoDetailsFetchingUseCase.swift,
+				Sources/UseCases/FeedFetchingUseCase.swift,
+				Sources/UseCases/PhotoDetailsFetchingUseCase.swift,
+				"Sources/Utils/Bundle+info.swift",
 				Sources/UTTApp.swift,
 			);
 			target = 3A52F71F2CEE8E48004ACA9F /* App */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		3AC35BAA2CFD02640079FD31 /* Exceptions for "App" folder in "Copy Bundle Resources" phase from "App" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 3A52F71E2CEE8E48004ACA9F /* Resources */;
+			membershipExceptions = (
+				Resources/db.xcdatamodeld,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3A52F70A2CEE8D9C004ACA9F /* App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				3A97C5072CEEB25B007D844D /* Exceptions for "App" folder in "App" target */,
+				3AC35BAA2CFD02640079FD31 /* Exceptions for "App" folder in "Copy Bundle Resources" phase from "App" target */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		3A52F71B2CEE8E24004ACA9F /* Packages */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Packages;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -46,8 +121,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A97C4EF2CEEB038007D844D /* DLNetwork in Frameworks */,
-				3A97C4F32CEEB04F007D844D /* ILScreenRoot in Frameworks */,
+				3A188EB62CFCFD8E008B0BEF /* SwiftUIExtensions in Frameworks */,
+				3A188EB32CFCFD82008B0BEF /* MultitoolTesting in Frameworks */,
+				3A188EAE2CFCFD77008B0BEF /* Kingfisher in Frameworks */,
+				3A188EFF2CFCFF01008B0BEF /* NetworkUtil in Frameworks */,
+				3A188EF82CFCFEF3008B0BEF /* Dependencies in Frameworks */,
+				3A188EB12CFCFD82008B0BEF /* Multitool in Frameworks */,
+				3A188EB82CFCFD8E008B0BEF /* UIKitExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				3A52F70A2CEE8D9C004ACA9F /* App */,
-				3A52F71B2CEE8E24004ACA9F /* Packages */,
 				3A97C4ED2CEEB038007D844D /* Frameworks */,
 				3A52F7092CEE8D9C004ACA9F /* Products */,
 			);
@@ -96,8 +175,13 @@
 			);
 			name = App;
 			packageProductDependencies = (
-				3A97C4EE2CEEB038007D844D /* DLNetwork */,
-				3A97C4F22CEEB04F007D844D /* ILScreenRoot */,
+				3A188EAD2CFCFD77008B0BEF /* Kingfisher */,
+				3A188EB02CFCFD82008B0BEF /* Multitool */,
+				3A188EB22CFCFD82008B0BEF /* MultitoolTesting */,
+				3A188EB52CFCFD8E008B0BEF /* SwiftUIExtensions */,
+				3A188EB72CFCFD8E008B0BEF /* UIKitExtensions */,
+				3A188EF72CFCFEF3008B0BEF /* Dependencies */,
+				3A188EFE2CFCFF01008B0BEF /* NetworkUtil */,
 			);
 			productName = App;
 			productReference = 3A52F7202CEE8E48004ACA9F /* App.app */;
@@ -127,6 +211,13 @@
 			);
 			mainGroup = 3A52F6FF2CEE8D9C004ACA9F;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				3A188EAC2CFCFD77008B0BEF /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				3A188EAF2CFCFD82008B0BEF /* XCRemoteSwiftPackageReference "Multitool" */,
+				3A188EB42CFCFD8E008B0BEF /* XCRemoteSwiftPackageReference "ui-extensions" */,
+				3A188EF62CFCFEF3008B0BEF /* XCRemoteSwiftPackageReference "swift-dependencies" */,
+				3A188EFD2CFCFF01008B0BEF /* XCRemoteSwiftPackageReference "NetworkUtil" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3A52F7092CEE8D9C004ACA9F /* Products */;
 			projectDirPath = "";
@@ -376,14 +467,84 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCSwiftPackageProductDependency section */
-		3A97C4EE2CEEB038007D844D /* DLNetwork */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DLNetwork;
+/* Begin XCRemoteSwiftPackageReference section */
+		3A188EAC2CFCFD77008B0BEF /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.1;
+			};
 		};
-		3A97C4F22CEEB04F007D844D /* ILScreenRoot */ = {
+		3A188EAF2CFCFD82008B0BEF /* XCRemoteSwiftPackageReference "Multitool" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AsioOtus/Multitool";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.37;
+			};
+		};
+		3A188EB42CFCFD8E008B0BEF /* XCRemoteSwiftPackageReference "ui-extensions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AsioOtus/ui-extensions";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.5;
+			};
+		};
+		3A188EF62CFCFEF3008B0BEF /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-dependencies";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.1;
+			};
+		};
+		3A188EFD2CFCFF01008B0BEF /* XCRemoteSwiftPackageReference "NetworkUtil" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AsioOtus/NetworkUtil";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3A188EAD2CFCFD77008B0BEF /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = ILScreenRoot;
+			package = 3A188EAC2CFCFD77008B0BEF /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		3A188EB02CFCFD82008B0BEF /* Multitool */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A188EAF2CFCFD82008B0BEF /* XCRemoteSwiftPackageReference "Multitool" */;
+			productName = Multitool;
+		};
+		3A188EB22CFCFD82008B0BEF /* MultitoolTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A188EAF2CFCFD82008B0BEF /* XCRemoteSwiftPackageReference "Multitool" */;
+			productName = MultitoolTesting;
+		};
+		3A188EB52CFCFD8E008B0BEF /* SwiftUIExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A188EB42CFCFD8E008B0BEF /* XCRemoteSwiftPackageReference "ui-extensions" */;
+			productName = SwiftUIExtensions;
+		};
+		3A188EB72CFCFD8E008B0BEF /* UIKitExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A188EB42CFCFD8E008B0BEF /* XCRemoteSwiftPackageReference "ui-extensions" */;
+			productName = UIKitExtensions;
+		};
+		3A188EF72CFCFEF3008B0BEF /* Dependencies */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A188EF62CFCFEF3008B0BEF /* XCRemoteSwiftPackageReference "swift-dependencies" */;
+			productName = Dependencies;
+		};
+		3A188EFE2CFCFF01008B0BEF /* NetworkUtil */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A188EFD2CFCFF01008B0BEF /* XCRemoteSwiftPackageReference "NetworkUtil" */;
+			productName = NetworkUtil;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
