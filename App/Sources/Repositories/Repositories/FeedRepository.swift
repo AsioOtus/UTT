@@ -9,27 +9,31 @@ import Dependencies
 import Foundation
 
 struct FeedRepository: PFeedDataProvider {
-	@Dependency(\.repeatableUrlClient) var urlClient
+	let networkController = NetworkController()
 
 	func load (photosPerPage: Int) async throws -> PhotosFragmentEntity {
-		let request = CuratedRequest(page: 1, perPage: photosPerPage)
-		let responseModel = try await urlClient.send(request, responseModel: CuratedRequest.ResponseModel.self).model
-		let photosFragmentEntity = map(responseModel)
+		let photoPage = try await networkController.send(
+			Requests.curated(page: 1, perPage: photosPerPage),
+			responseType: PhotoPage.self
+		)
+		let photosFragmentEntity = map(photoPage)
 
 		return photosFragmentEntity
 	}
 
 	func load (nextFragmentUrl: URL) async throws -> PhotosFragmentEntity {
-		let request = NextCuratedRequest(addressUrl: nextFragmentUrl)
-		let responseModel = try await urlClient.send(request, responseModel: CuratedRequest.ResponseModel.self).model
-		let photosFragmentEntity = map(responseModel)
+		let photoPage = try await networkController.send(
+			Requests.nextCurated(nextFragmentUrl),
+			responseType: PhotoPage.self
+		)
+		let photosFragmentEntity = map(photoPage)
 
 		return photosFragmentEntity
 	}
 }
 
 private extension FeedRepository {
-	func map (_ responseModel: CuratedRequest.ResponseModel) -> PhotosFragmentEntity {
+	func map (_ responseModel: PhotoPage) -> PhotosFragmentEntity {
 		.init(
 			page: responseModel.page,
 			photosPerPage: responseModel.perPage,

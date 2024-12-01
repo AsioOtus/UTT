@@ -9,10 +9,10 @@ import Dependencies
 import Foundation
 
 public struct PhotoDetailsRepository: PPhotoDetailsDataProvider {
-	@Dependency(\.urlClient) var urlClient
+	let networkController = NetworkController()
 
 	public func loadPhoto (id: Int) async throws -> PhotoEntity {
-		try await urlClient.send(PhotoRequest(id: id), responseModel: Photo.self).model.entity
+		try await networkController.send(Requests.photo(id), responseType: Photo.self).entity
 	}
 }
 

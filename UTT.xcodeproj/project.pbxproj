@@ -13,7 +13,6 @@
 		3A188EB62CFCFD8E008B0BEF /* SwiftUIExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 3A188EB52CFCFD8E008B0BEF /* SwiftUIExtensions */; };
 		3A188EB82CFCFD8E008B0BEF /* UIKitExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 3A188EB72CFCFD8E008B0BEF /* UIKitExtensions */; };
 		3A188EF82CFCFEF3008B0BEF /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 3A188EF72CFCFEF3008B0BEF /* Dependencies */; };
-		3A188EFF2CFCFF01008B0BEF /* NetworkUtil in Frameworks */ = {isa = PBXBuildFile; productRef = 3A188EFE2CFCFF01008B0BEF /* NetworkUtil */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,15 +29,10 @@
 				"Sources/Entities/EntitiesStubs/PhotoEntity+stubs.swift",
 				"Sources/Entities/EntitiesStubs/PhotoFragmentEntity+stubs.swift",
 				"Sources/Entities/EntitiesStubs/URL+stubs.swift",
-				Sources/Repositories/Network/Models/Photo.swift,
-				Sources/Repositories/Network/NetworkConnectivityURLClientDependencyKey.swift,
-				Sources/Repositories/Network/OfflineDecorator.swift,
-				Sources/Repositories/Network/RepeatableURLClientDependencyKey.swift,
-				Sources/Repositories/Network/Requests/CuratedRequest.swift,
-				Sources/Repositories/Network/Requests/NextCuratedRequest.swift,
-				Sources/Repositories/Network/Requests/PhotoRequest.swift,
-				Sources/Repositories/Network/URLClientDependencyKey.swift,
-				"Sources/Repositories/NetworkStubs/CuratedRequest.ResponseModel+stubs.swift",
+				Sources/Repositories/Network/NetworkController.swift,
+				Sources/Repositories/Network/Requests.swift,
+				Sources/Repositories/Network/Responses/Photo.swift,
+				Sources/Repositories/Network/Responses/PhotoPage.swift,
 				Sources/Repositories/Persistence/CoreDataPersistentController.swift,
 				Sources/Repositories/Persistence/DBEntities/DBEntity.swift,
 				Sources/Repositories/Persistence/DBEntities/PhotoDBEntity.swift,
@@ -124,7 +118,6 @@
 				3A188EB62CFCFD8E008B0BEF /* SwiftUIExtensions in Frameworks */,
 				3A188EB32CFCFD82008B0BEF /* MultitoolTesting in Frameworks */,
 				3A188EAE2CFCFD77008B0BEF /* Kingfisher in Frameworks */,
-				3A188EFF2CFCFF01008B0BEF /* NetworkUtil in Frameworks */,
 				3A188EF82CFCFEF3008B0BEF /* Dependencies in Frameworks */,
 				3A188EB12CFCFD82008B0BEF /* Multitool in Frameworks */,
 				3A188EB82CFCFD8E008B0BEF /* UIKitExtensions in Frameworks */,
@@ -181,7 +174,6 @@
 				3A188EB52CFCFD8E008B0BEF /* SwiftUIExtensions */,
 				3A188EB72CFCFD8E008B0BEF /* UIKitExtensions */,
 				3A188EF72CFCFEF3008B0BEF /* Dependencies */,
-				3A188EFE2CFCFF01008B0BEF /* NetworkUtil */,
 			);
 			productName = App;
 			productReference = 3A52F7202CEE8E48004ACA9F /* App.app */;
@@ -216,7 +208,6 @@
 				3A188EAF2CFCFD82008B0BEF /* XCRemoteSwiftPackageReference "Multitool" */,
 				3A188EB42CFCFD8E008B0BEF /* XCRemoteSwiftPackageReference "ui-extensions" */,
 				3A188EF62CFCFEF3008B0BEF /* XCRemoteSwiftPackageReference "swift-dependencies" */,
-				3A188EFD2CFCFF01008B0BEF /* XCRemoteSwiftPackageReference "NetworkUtil" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3A52F7092CEE8D9C004ACA9F /* Products */;
@@ -500,14 +491,6 @@
 				minimumVersion = 1.6.1;
 			};
 		};
-		3A188EFD2CFCFF01008B0BEF /* XCRemoteSwiftPackageReference "NetworkUtil" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AsioOtus/NetworkUtil";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.4;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -540,11 +523,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3A188EF62CFCFEF3008B0BEF /* XCRemoteSwiftPackageReference "swift-dependencies" */;
 			productName = Dependencies;
-		};
-		3A188EFE2CFCFF01008B0BEF /* NetworkUtil */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3A188EFD2CFCFF01008B0BEF /* XCRemoteSwiftPackageReference "NetworkUtil" */;
-			productName = NetworkUtil;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

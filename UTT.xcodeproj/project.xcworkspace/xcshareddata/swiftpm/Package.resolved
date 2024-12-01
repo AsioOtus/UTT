@@ -1,5 +1,5 @@
 {
-  "originHash" : "0d6d23d09ae290b6595ee13d43b9b9ecb82307ee4ca907f6d7aff318deaadece",
+  "originHash" : "ea814fe23dfbb2169a8b417d8faf7d08c3d9ccb2a9af729ee53af56b9dfa15e5",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -26,15 +26,6 @@
       "state" : {
         "revision" : "c28b7e8c8d3734952dfb22c922d1a46130fb9e35",
         "version" : "1.0.37"
-      }
-    },
-    {
-      "identity" : "networkutil",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/AsioOtus/NetworkUtil",
-      "state" : {
-        "revision" : "f3f8cf71e21bdd0fae0659e7dc272a9f770601ea",
-        "version" : "2.1.4"
       }
     },
     {
