@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Multitool
 
 protocol PPhotoDetailsInteractor: ObservableObject {
 	var photoDetails: Loadable<PhotoEntity> { get }
@@ -35,23 +34,24 @@ class PhotoDetailsInteractor: PPhotoDetailsInteractor {
 	}
 
 	func loadPhotoDetails () {
-		photoDetails.setLoading {
-			Task {
-				photoDetails = await Loadable<PhotoEntity>.result {
-					do {
-						let photo = try await photoDetailsDataProvider.loadPhoto(id: photoId)
-						try? photoDetailsPersistentDataProvider.savePhoto(photo)
-						return photo
-					} catch let error as OfflineError {
-						if let photoEntity = try? photoDetailsPersistentDataProvider.loadPhoto(id: photoId) {
-							return photoEntity
-						} else {
-							throw error
-						}
+		photoDetails.cancel()
+		let task = Task<Void, Error> {
+			photoDetails = await Loadable<PhotoEntity> {
+				do {
+					let photo = try await photoDetailsDataProvider.loadPhoto(id: photoId)
+					try? photoDetailsPersistentDataProvider.savePhoto(photo)
+					return photo
+				} catch let error as OfflineError {
+					if let photoEntity = try? photoDetailsPersistentDataProvider.loadPhoto(id: photoId) {
+						return photoEntity
+					} else {
+						throw error
 					}
 				}
 			}
 		}
+
+		photoDetails = .loading(task: task, value: photoDetails.value)
 	}
 
 	func downgradePhotoUrl () {

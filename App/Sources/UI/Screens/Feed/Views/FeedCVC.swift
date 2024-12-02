@@ -7,7 +7,6 @@
 
 import Combine
 import Kingfisher
-import Multitool
 import SwiftUI
 import UIKit
 import UIKitExtensions

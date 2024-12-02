@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3A188EAE2CFCFD77008B0BEF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3A188EAD2CFCFD77008B0BEF /* Kingfisher */; };
-		3A188EB12CFCFD82008B0BEF /* Multitool in Frameworks */ = {isa = PBXBuildFile; productRef = 3A188EB02CFCFD82008B0BEF /* Multitool */; };
-		3A188EB32CFCFD82008B0BEF /* MultitoolTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 3A188EB22CFCFD82008B0BEF /* MultitoolTesting */; };
 		3A188EB62CFCFD8E008B0BEF /* SwiftUIExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 3A188EB52CFCFD8E008B0BEF /* SwiftUIExtensions */; };
 		3A188EB82CFCFD8E008B0BEF /* UIKitExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 3A188EB72CFCFD8E008B0BEF /* UIKitExtensions */; };
 /* End PBXBuildFile section */
@@ -79,6 +77,7 @@
 				Sources/UI/Screens/PhotoDetails/PhotoDetailsVM.swift,
 				Sources/UI/Screens/Root/RootScreen.swift,
 				"Sources/Utils/Bundle+info.swift",
+				Sources/Utils/Loadable.swift,
 				Sources/UTTApp.swift,
 			);
 			target = 3A52F71F2CEE8E48004ACA9F /* App */;
@@ -113,9 +112,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A188EB62CFCFD8E008B0BEF /* SwiftUIExtensions in Frameworks */,
-				3A188EB32CFCFD82008B0BEF /* MultitoolTesting in Frameworks */,
 				3A188EAE2CFCFD77008B0BEF /* Kingfisher in Frameworks */,
-				3A188EB12CFCFD82008B0BEF /* Multitool in Frameworks */,
 				3A188EB82CFCFD8E008B0BEF /* UIKitExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,8 +162,6 @@
 			name = App;
 			packageProductDependencies = (
 				3A188EAD2CFCFD77008B0BEF /* Kingfisher */,
-				3A188EB02CFCFD82008B0BEF /* Multitool */,
-				3A188EB22CFCFD82008B0BEF /* MultitoolTesting */,
 				3A188EB52CFCFD8E008B0BEF /* SwiftUIExtensions */,
 				3A188EB72CFCFD8E008B0BEF /* UIKitExtensions */,
 			);
@@ -200,7 +195,6 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				3A188EAC2CFCFD77008B0BEF /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				3A188EAF2CFCFD82008B0BEF /* XCRemoteSwiftPackageReference "Multitool" */,
 				3A188EB42CFCFD8E008B0BEF /* XCRemoteSwiftPackageReference "ui-extensions" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -461,14 +455,6 @@
 				minimumVersion = 8.1.1;
 			};
 		};
-		3A188EAF2CFCFD82008B0BEF /* XCRemoteSwiftPackageReference "Multitool" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AsioOtus/Multitool";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.37;
-			};
-		};
 		3A188EB42CFCFD8E008B0BEF /* XCRemoteSwiftPackageReference "ui-extensions" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AsioOtus/ui-extensions";
@@ -484,16 +470,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3A188EAC2CFCFD77008B0BEF /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		3A188EB02CFCFD82008B0BEF /* Multitool */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3A188EAF2CFCFD82008B0BEF /* XCRemoteSwiftPackageReference "Multitool" */;
-			productName = Multitool;
-		};
-		3A188EB22CFCFD82008B0BEF /* MultitoolTesting */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3A188EAF2CFCFD82008B0BEF /* XCRemoteSwiftPackageReference "Multitool" */;
-			productName = MultitoolTesting;
 		};
 		3A188EB52CFCFD8E008B0BEF /* SwiftUIExtensions */ = {
 			isa = XCSwiftPackageProductDependency;

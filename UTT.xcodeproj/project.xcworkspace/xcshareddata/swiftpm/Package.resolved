@@ -1,5 +1,5 @@
 {
-  "originHash" : "100988c12a8d9b0c44cc7db98bee8da4cf5e12f4eae8cdd94dbb37915fab8b21",
+  "originHash" : "58bbda2190f79cb1b31cb966ac75272db0d4256078dad6c3f57b345aa5db4ba0",
   "pins" : [
     {
       "identity" : "kingfisher",
@@ -8,15 +8,6 @@
       "state" : {
         "revision" : "b6256f191b4c1d8d09f4df94bae69e5ac6e42c81",
         "version" : "8.1.1"
-      }
-    },
-    {
-      "identity" : "multitool",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/AsioOtus/Multitool",
-      "state" : {
-        "revision" : "c28b7e8c8d3734952dfb22c922d1a46130fb9e35",
-        "version" : "1.0.37"
       }
     },
     {

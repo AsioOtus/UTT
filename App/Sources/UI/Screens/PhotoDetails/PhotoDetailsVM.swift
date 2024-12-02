@@ -7,7 +7,6 @@
 
 import Combine
 import Foundation
-import Multitool
 
 @dynamicMemberLookup
 class PhotoDetailsVM <Interactor: PPhotoDetailsInteractor>: ObservableObject {

@@ -7,7 +7,6 @@
 
 import Combine
 import Foundation
-import Multitool
 
 protocol PFeedInteractor {
 	var photosPerPage: Int { get }
@@ -100,6 +99,6 @@ private extension FeedInteractor {
 			currentFragment.send(result)
 		}
 
-		currentFragment.send(.loading(task: loadingTask))
+		currentFragment.send(.loading(task: loadingTask, value: nil))
 	}
 }
