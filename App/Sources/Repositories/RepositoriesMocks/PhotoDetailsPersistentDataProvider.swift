@@ -15,14 +15,14 @@ extension Mock {
 			self.stubValue = stubValue
 		}
 
-		public var paramPhotoEntity: PhotoEntity?
+		public var paramPhotoEntity = [PhotoEntity]()
 		public func savePhoto (_ photoEntity: PhotoEntity) throws {
-			paramPhotoEntity = photoEntity
+			paramPhotoEntity.append(photoEntity)
 		}
 
-		public var paramPhotoEntities: [PhotoEntity]?
+		public var paramPhotoEntities = [[PhotoEntity]]()
 		public func savePhotos (_ photoEntities: [PhotoEntity]) throws {
-			paramPhotoEntities = photoEntities
+			paramPhotoEntities.append(photoEntities)
 		}
 
 		public func loadPhoto (id: Int) throws -> PhotoEntity? {

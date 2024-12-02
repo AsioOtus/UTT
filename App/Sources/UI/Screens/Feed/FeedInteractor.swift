@@ -21,13 +21,16 @@ protocol PFeedInteractor {
 actor FeedInteractor: PFeedInteractor {
 	let feedDataProvider: PFeedDataProvider
 	let photoDetailsPersistentDataProvider: PPhotoDetailsPersistentDataProvider
+	let taskFactory: PTaskFactory
 
 	init (
 		feedDataProvider: PFeedDataProvider,
-		photoDetailsPersistentDataProvider: PPhotoDetailsPersistentDataProvider
+		photoDetailsPersistentDataProvider: PPhotoDetailsPersistentDataProvider,
+		taskFactory: PTaskFactory
 	) {
 		self.feedDataProvider = feedDataProvider
 		self.photoDetailsPersistentDataProvider = photoDetailsPersistentDataProvider
+		self.taskFactory = taskFactory
 	}
 
 	let photosPerPage = 20
@@ -89,14 +92,14 @@ private extension FeedInteractor {
 	func loadPhotoFragment (_ loadingAction: @escaping () async throws -> PhotosFragmentEntity) {
 		currentFragment.value.cancel()
 
-		let loadingTask = Task<Void, Error> {
+		let loadingTask: Task<Void, Error> = taskFactory.task {
 			let result = await Loadable<PhotosFragmentEntity> {
 				let photoFragment = try await loadingAction()
-				lastLoadedFragment = photoFragment
+				self.lastLoadedFragment = photoFragment
 				return photoFragment
 			}
 
-			currentFragment.send(result)
+			self.currentFragment.send(result)
 		}
 
 		currentFragment.send(.loading(task: loadingTask, value: nil))

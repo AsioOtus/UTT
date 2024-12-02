@@ -12,7 +12,8 @@ struct FeedFactory {
 		.init(
 			interactor: FeedInteractor(
 				feedDataProvider: FeedRepository(),
-				photoDetailsPersistentDataProvider: PhotoPersistentRepository()
+				photoDetailsPersistentDataProvider: PhotoPersistentRepository(),
+				taskFactory: TaskFactory()
 			)
 		)
 	}
