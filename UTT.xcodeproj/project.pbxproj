@@ -22,7 +22,6 @@
 			membershipExceptions = (
 				Sources/Entities/Entities/Entities/PhotoEntity.swift,
 				Sources/Entities/Entities/Entities/PhotoFragmentEntity.swift,
-				Sources/Entities/Entities/Errors/OfflineError.swift,
 				"Sources/Entities/EntitiesStubs/PhotoEntity+stubs.swift",
 				"Sources/Entities/EntitiesStubs/PhotoFragmentEntity+stubs.swift",
 				"Sources/Entities/EntitiesStubs/URL+stubs.swift",

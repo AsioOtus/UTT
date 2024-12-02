@@ -41,7 +41,7 @@ class PhotoDetailsInteractor: PPhotoDetailsInteractor {
 					let photo = try await photoDetailsDataProvider.loadPhoto(id: photoId)
 					try? photoDetailsPersistentDataProvider.savePhoto(photo)
 					return photo
-				} catch let error as OfflineError {
+				} catch {
 					if let photoEntity = try? photoDetailsPersistentDataProvider.loadPhoto(id: photoId) {
 						return photoEntity
 					} else {
