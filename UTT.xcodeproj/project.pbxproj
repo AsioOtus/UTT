@@ -31,11 +31,11 @@
 		3A97C5072CEEB25B007D844D /* Exceptions for "App" folder in "App" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Sources/Entities/Entities/Entities/PhotoEntity.swift,
-				Sources/Entities/Entities/Entities/PhotoFragmentEntity.swift,
 				"Sources/Entities/EntitiesStubs/PhotoEntity+stubs.swift",
 				"Sources/Entities/EntitiesStubs/PhotoFragmentEntity+stubs.swift",
 				"Sources/Entities/EntitiesStubs/URL+stubs.swift",
+				Sources/Entities/PhotoEntity.swift,
+				Sources/Entities/PhotoFragmentEntity.swift,
 				Sources/Repositories/Network/NetworkController.swift,
 				Sources/Repositories/Network/Requests.swift,
 				Sources/Repositories/Network/Responses/Photo.swift,
